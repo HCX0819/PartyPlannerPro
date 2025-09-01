@@ -7,6 +7,13 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+#include <regex>
+#include <vector>
+#include <string>
+#include <limits>
+#include <cstdlib>
+#include <iomanip>
 using namespace std;
 
 // Guest structure
