@@ -16,6 +16,9 @@
 #include <iomanip>
 using namespace std;
 
+// Forward declaration
+struct Event;
+
 // Guest structure
 struct Guest {
     string name;
@@ -26,5 +29,6 @@ struct Guest {
 
 // Global guest list (shared between modules via reference)
 extern vector<Guest> guestList;
+extern vector<Event> eventList;  // Global event list
 
 #endif

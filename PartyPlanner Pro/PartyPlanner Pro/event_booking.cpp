@@ -19,9 +19,7 @@ int getSafeInt(const string& prompt) {
 
 // ==================== EVENT BOOKING MENU ====================
 void eventBookingMenu(vector<Guest>& guestList) {
-    vector<Event> events;
-
-    loadEventsFromFile(events); // Load events at program start
+    // Use global event list (declared in common.h)
 
     cout << "--------------------------------------\n";
     cout << " Welcome to the Event Booking System! \n";
@@ -41,15 +39,15 @@ void eventBookingMenu(vector<Guest>& guestList) {
         choice = getSafeInt("Enter your choice: ");
 
         switch (choice) {
-        case 1: bookEvent(events); break;
-        case 2: viewEventBookings(events); break;
-        case 3: saveEventsToFile(events); break;
-        case 4: loadEventsFromFile(events); break;
-        case 5: deleteEvent(events); break;
-        case 6: updateEvent(events); break;
+        case 1: bookEvent(eventList); break;
+        case 2: viewEventBookings(eventList); break;
+        case 3: saveEventsToFile(eventList); break;
+        case 4: loadEventsFromFile(eventList); break;
+        case 5: deleteEvent(eventList); break;
+        case 6: updateEvent(eventList); break;
         case 0:
             cout << "Returning to Main Menu...\n";
-            saveEventsToFile(events); // Auto-save before returning
+            saveEventsToFile(eventList); // Auto-save before returning
             break;
         default: cout << "That's not a valid option. Please try again.\n";
         }

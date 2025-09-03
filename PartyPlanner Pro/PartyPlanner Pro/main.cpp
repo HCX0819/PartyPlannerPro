@@ -5,8 +5,12 @@
 #include "event_booking.h"
 
 vector<Guest> guestList;  // define global variable
+vector<Event> eventList;  // define global event list
 
 int main() {
+    // Load events at program start
+    loadEventsFromFile(eventList);
+    
     int choice;
     do {
         cout << "\n===== PartyPlanner Pro =====\n";
@@ -21,9 +25,12 @@ int main() {
         switch (choice) {
         case 1: guestManagementMenu(guestList); break;
         case 2: chooseFood(guestList); break;
-        case 3: reportingMenu(guestList); break;
+        case 3: reportingMenu(guestList, eventList); break;
         case 4: eventBookingMenu(guestList); break;
-        case 5: cout << "Exiting program...\n"; break;
+        case 5: 
+            saveEventsToFile(eventList); // Save events before exiting
+            cout << "Exiting program...\n"; 
+            break;
         default: cout << "Invalid choice.\n"; break;
         }
     } while (choice != 5);
