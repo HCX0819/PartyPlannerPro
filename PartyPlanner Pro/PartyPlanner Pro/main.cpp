@@ -21,7 +21,7 @@ int main() {
         switch (choice) {
         case 1: guestManagementMenu(guestList); break;
         case 2: chooseFood(guestList); break;
-        case 3: generateSummary(guestList); break;
+        case 3: reportingMenu(guestList); break;
         case 4: eventBookingMenu(guestList); break;
         case 5: cout << "Exiting program...\n"; break;
         default: cout << "Invalid choice.\n"; break;

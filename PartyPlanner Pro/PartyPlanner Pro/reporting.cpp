@@ -123,29 +123,7 @@ void generateDetailedReport(const vector<Guest>& guestList) {
     cout << "Total: " << guestList.size() << " guests\n";
 }
 
-void exportToCSV(const vector<Guest>& guestList) {
-    if (guestList.empty()) {
-        cout << "No data to export.\n";
-        return;
-    }
 
-    ofstream file("party_report.csv");
-    if (!file.is_open()) {
-        cout << "Error: Cannot create CSV file.\n";
-        return;
-    }
-
-    // Write header
-    file << "Name,Phone,RSVP Status,Food Choice\n";
-
-    // Write data
-    for (const auto& g : guestList) {
-        file << g.name << "," << g.phone << "," << g.rsvp << "," << g.food << "\n";
-    }
-
-    file.close();
-    cout << "Report exported to 'party_report.csv' successfully!\n";
-}
 
 void reportingMenu(const vector<Guest>& guestList) {
     int choice;
@@ -153,17 +131,15 @@ void reportingMenu(const vector<Guest>& guestList) {
         cout << "\n--- Reporting & Summary Menu ---\n";
         cout << "1. Generate Summary Report\n";
         cout << "2. Generate Detailed Guest List\n";
-        cout << "3. Export to CSV File\n";
-        cout << "4. Back to Main Menu\n";
+        cout << "3. Back to Main Menu\n";
         cout << "Enter choice: ";
         cin >> choice;
 
         switch (choice) {
         case 1: generateSummary(guestList); break;
         case 2: generateDetailedReport(guestList); break;
-        case 3: exportToCSV(guestList); break;
-        case 4: break;
+        case 3: break;
         default: cout << "Invalid choice.\n"; break;
         }
-    } while (choice != 4);
+    } while (choice != 3);
 }

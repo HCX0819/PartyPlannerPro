@@ -1,4 +1,8 @@
 ﻿  event_booking.cpp
+  food_selection.cpp
+  guest_management.cpp
+C:\Users\ACER\source\repos\PartyPlannerPro\PartyPlanner Pro\PartyPlanner Pro\guest_management.cpp(275,15): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   main.cpp
+  reporting.cpp
   Generating Code...
-  PartyPlanner Pro.vcxproj -> C:\Users\User\source\repos\PartyPlannerPro\PartyPlanner Pro\x64\Debug\PartyPlanner Pro.exe
+  PartyPlanner Pro.vcxproj -> C:\Users\ACER\source\repos\PartyPlannerPro\PartyPlanner Pro\x64\Debug\PartyPlanner Pro.exe
