@@ -26,6 +26,16 @@ void chooseFood(vector<Guest>& guestList) {
             default: cout << "Invalid choice.\n"; return;
             }
             cout << "Food updated for " << g.name << "!\n";
+            // Autosave after update
+            extern string currentUser;
+            string filename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";
+            ofstream file(filename);
+            if (file.is_open()) {
+                for (const auto& guest : guestList) {
+                    file << guest.name << "," << guest.phone << "," << guest.rsvp << "," << guest.food << "\n";
+                }
+                file.close();
+            }
             return;
         }
     }
