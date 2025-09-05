@@ -24,7 +24,7 @@ int main() {
 
         switch (choice) {
         case 1: guestManagementMenu(guestList); break;
-        case 2: chooseFood(guestList); break;
+        case 2: foodMenu(guestList); break;
         case 3: reportingMenu(guestList, eventList); break;
         case 4: eventBookingMenu(guestList); break;
         case 5: 
