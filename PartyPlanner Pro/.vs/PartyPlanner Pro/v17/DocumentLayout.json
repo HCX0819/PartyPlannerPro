@@ -26,8 +26,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +40,7 @@
               "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
               "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\main.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACUAAAANAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-27T05:13:58.472Z",
               "EditorCaption": ""
