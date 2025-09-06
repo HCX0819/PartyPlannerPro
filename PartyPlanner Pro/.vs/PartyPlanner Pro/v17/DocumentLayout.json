@@ -26,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
+              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "RelativeToolTip": "PartyPlanner Pro\\main.cpp",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-27T05:13:58.472Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
@@ -42,8 +55,7 @@
               "RelativeToolTip": "PartyPlanner Pro\\food_selection.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T11:51:04.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T11:51:04.915Z"
             },
             {
               "$type": "Document",
@@ -55,8 +67,7 @@
               "RelativeToolTip": "PartyPlanner Pro\\reporting.cpp",
               "ViewState": "AQIAAPYAAAAAAAAAAAAAAAwBAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-27T05:14:28.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-27T05:14:28.267Z"
             },
             {
               "$type": "Document",
@@ -68,21 +79,7 @@
               "RelativeToolTip": "PartyPlanner Pro\\food_selection.cpp",
               "ViewState": "AQIAANQAAAAAAAAAAADwv/MAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-27T05:13:08.693Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
-              "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
-              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
-              "RelativeToolTip": "PartyPlanner Pro\\main.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-27T05:13:58.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-27T05:13:08.693Z"
             }
           ]
         }
