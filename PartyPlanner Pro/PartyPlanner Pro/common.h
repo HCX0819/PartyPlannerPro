@@ -30,5 +30,6 @@ struct Guest {
 // Global guest list (shared between modules via reference)
 extern vector<Guest> guestList;
 extern vector<Event> eventList;  // Global event list
+extern string currentUser;  // Current logged in user
 
 #endif

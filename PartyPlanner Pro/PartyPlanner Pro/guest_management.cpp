@@ -1,4 +1,5 @@
 #include "guest_management.h"
+#include <sstream>
 
 using namespace std;
 
@@ -316,7 +317,8 @@ void saveGuestsToFile(const vector<Guest>& guestList, const string& filename) {
         for (const auto& guest : guestList) {
             file << guest.name << ","
                 << guest.phone << ","
-                << guest.rsvp << "\n";
+                << guest.rsvp << ","
+                << guest.food << "\n";
         }
         file.close();
         cout << "Guest data saved successfully to " << filename << "!\n";
@@ -329,6 +331,8 @@ void saveGuestsToFile(const vector<Guest>& guestList, const string& filename) {
 void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
     ifstream file(filename);
     if (!file) {
+        // Ensure no stale data remains when the user has no file yet
+        guestList.clear();
         cout << "Error: Cannot open file '" << filename << "'\n";
         cout << "Please make sure you've saved data first using option 7.\n";
         return;
@@ -341,14 +345,19 @@ void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
     while (getline(file, line)) {
         if (line.empty()) continue;
 
-        size_t pos1 = line.find(',');
-        size_t pos2 = line.find(',', pos1 + 1);
+        stringstream ss(line);
+        Guest guest;
+        string name, phone, rsvp, food;
+        bool okName = static_cast<bool>(getline(ss, name, ','));
+        bool okPhone = static_cast<bool>(getline(ss, phone, ','));
+        bool okRsvp = static_cast<bool>(getline(ss, rsvp, ','));
+        bool okFood = static_cast<bool>(getline(ss, food, ','));
 
-        if (pos1 != string::npos && pos2 != string::npos) {
-            Guest guest;
-            guest.name = line.substr(0, pos1);
-            guest.phone = line.substr(pos1 + 1, pos2 - pos1 - 1);
-            guest.rsvp = line.substr(pos2 + 1);
+        if (okName && okPhone && okRsvp) {
+            guest.name = name;
+            guest.phone = phone;
+            guest.rsvp = rsvp;
+            guest.food = okFood ? food : string(""); // tolerate legacy 3-field rows
             guestList.push_back(guest);
             loadedCount++;
         }
@@ -369,6 +378,10 @@ void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
 
 
 void guestManagementMenu(vector<Guest>& guestList) {
+    extern string currentUser;
+    string filename = currentUser + "_guests.txt";
+    loadGuestsFromFile(guestList, filename);
+
     int choice;
     do {
         cout << "\n====== Guest Management ======\n";
@@ -387,14 +400,20 @@ void guestManagementMenu(vector<Guest>& guestList) {
         cin >> choice;
 
         switch (choice) {
-        case 1: registerGuest(guestList); break;
-        case 2: editGuestDetail(guestList); break;
-        case 3: deleteGuest(guestList); break;
-        case 4: updateRSVP(guestList); break;
+        case 1: registerGuest(guestList); saveGuestsToFile(guestList, filename); break;
+        case 2: editGuestDetail(guestList); saveGuestsToFile(guestList, filename); break;
+        case 3: deleteGuest(guestList); saveGuestsToFile(guestList, filename); break;
+        case 4: updateRSVP(guestList); saveGuestsToFile(guestList, filename); break;
         case 5: viewGuestList(guestList); break;
         case 6: showRSVPStats(guestList); break;
-        case 7: saveGuestsToFile(guestList, "guests.txt"); break;
-        case 8: loadGuestsFromFile(guestList, "guests.txt"); break;
+        case 7: {
+            saveGuestsToFile(guestList, filename);
+            break;
+        }
+        case 8: {
+            loadGuestsFromFile(guestList, filename);
+            break;
+        }
         case 9: searchGuest(guestList); break;   // <-- Added
         case 10: cout << "Returning to main menu...\n"; break;
         default: cout << "Invalid choice. Please try again.\n"; break;

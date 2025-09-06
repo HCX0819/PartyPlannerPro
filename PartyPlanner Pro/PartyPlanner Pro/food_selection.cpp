@@ -136,46 +136,24 @@ void editGuestFood(vector<Guest>& guestList) {
                     cout << "Enter choice: ";
                     cin >> choice;
 
-                    string newFood;
-                    switch (choice) {
-                    case 0:
-                        cout << " Finished editing food.\n";
-                        break;
-                    case 1: newFood = "Pasta"; break;
-                    case 2: newFood = "Nasi lemak"; break;
-                    case 3: newFood = "Pizza"; break;
-                    case 4: newFood = "Burger"; break;
-                    case 5: newFood = "Fried Chicken"; break;
-                    case 6: newFood = "French fries"; break;
-                    case 7: newFood = "Cake"; break;
-                    case 8: newFood = "Soda drink"; break;
-                    case 9: newFood = "Iced lemon tea"; break;
-                    case 10: newFood = "Tea"; break;
-                    case 11: newFood = "Mineral Water"; break;
-                    default:
-                        cout << " Invalid choice.\n";
-                        continue;
-                    }
-
-                    if (choice != 0) {
-                        // Prevent duplicates
-                        if (g.food.find(newFood) == string::npos) {
-                            if (!g.food.empty() && g.food != "None") {
-                                g.food += ", " + newFood;
-                            }
-                            else {
-                                g.food = newFood;
-                            }
-                            cout << " Added " << newFood << " for " << g.name << ".\n";
-                        }
-                        else {
-                            cout << g.name << " already selected " << newFood << ".\n";
-                        }
-                    }
-                } while (choice != 0);
+            switch (choice) {
+            case 1: g.food = "Pizza"; break;
+            case 2: g.food = "Cake"; break;
+            case 3: g.food = "Drinks"; break;
+            case 4: g.food = "Sandwich"; break;
+            case 5: g.food = "Salad"; break;
+            default: cout << "Invalid choice.\n"; return;
             }
-            else {
-                cout << "No changes made.\n";
+            cout << "Food updated for " << g.name << "!\n";
+            // Autosave after update
+            extern string currentUser;
+            string filename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";
+            ofstream file(filename);
+            if (file.is_open()) {
+                for (const auto& guest : guestList) {
+                    file << guest.name << "," << guest.phone << "," << guest.rsvp << "," << guest.food << "\n";
+                }
+                file.close();
             }
             return;
         }

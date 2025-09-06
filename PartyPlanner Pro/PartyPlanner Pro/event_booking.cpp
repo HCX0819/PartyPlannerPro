@@ -135,7 +135,10 @@ void viewEventBookings(const vector<Event>& events) {
 
 // ==================== SAVE TO FILE ====================
 void saveEventsToFile(const vector<Event>& events) {
-    ofstream outFile("events.txt");
+    extern string currentUser;
+    string filename = currentUser.empty() ? "events.txt" : currentUser + "_events.txt";
+    
+    ofstream outFile(filename);
     if (!outFile) {
         cout << "Couldn't open file for writing.\n";
         return;
@@ -153,7 +156,10 @@ void saveEventsToFile(const vector<Event>& events) {
 
 // ==================== LOAD FROM FILE ====================
 void loadEventsFromFile(vector<Event>& events) {
-    ifstream inFile("events.txt");
+    extern string currentUser;
+    string filename = currentUser.empty() ? "events.txt" : currentUser + "_events.txt";
+    
+    ifstream inFile(filename);
     if (!inFile) {
         cout << "No saved events were found.\n";
         return;
