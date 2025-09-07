@@ -57,7 +57,7 @@ void eventBookingMenu(vector<Guest>& guestList) {
 // ==================== BOOK EVENT ====================
 void bookEvent(vector<Event>& events) {
     Event e;
-    cin.ignore(); // clear buffer
+    // Removed extra cin.ignore() to prevent skipping first character of next input
 
     cout << "\nLet's book a new event!\n";
     cout << "Event Name: ";
@@ -98,11 +98,36 @@ void bookEvent(vector<Event>& events) {
         break;
     } while (true);
 
-    cout << "Location: ";
-    getline(cin, e.location);
-    while (e.location.empty()) {
-        cout << "Location cannot be empty. Please enter again: ";
+    // Location selection menu
+    int locChoice;
+    cout << "\nChoose a Location:\n";
+    cout << "1. Home\n";
+    cout << "2. Restaurant\n";
+    cout << "3. Hotel\n";
+    cout << "4. Community Hall\n";
+    cout << "5. Outdoor Park\n";
+    cout << "6. Other (type your own)\n";
+
+    locChoice = getSafeInt("Enter your choice (1-6): ");
+
+    switch (locChoice) {
+    case 1: e.location = "Home"; break;
+    case 2: e.location = "Restaurant"; break;
+    case 3: e.location = "Hotel"; break;
+    case 4: e.location = "Community Hall"; break;
+    case 5: e.location = "Outdoor Park"; break;
+    case 6: {
+        cout << "Enter custom location: ";
         getline(cin, e.location);
+        while (e.location.empty()) {
+            cout << "Location cannot be empty. Enter again: ";
+            getline(cin, e.location);
+        }
+        break;
+    }
+    default:
+        cout << "Invalid choice. Location set to 'Unspecified'.\n";
+        e.location = "Unspecified";
     }
 
     events.push_back(e);
