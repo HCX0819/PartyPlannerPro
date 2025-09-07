@@ -21,22 +21,42 @@ static void centerPrint(const string& text, size_t width) {
 
 static void printAuthHeader() {
     clearScreenAuth();
-    const size_t width = 80; // Adjusted width for new art
-    const string border = ".~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.~*~.";
-
+    const size_t width = 80;
+    const string border = ".~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.~~.";
     cout << border.substr(0, width) << "\n\n";
-    centerPrint(" o__ __o     o__ __o     o__ __o   ", width);
-    centerPrint(" <|     v\\   <|     v\\   <|     v\\  ", width);
-    centerPrint("/ \\     <\\ / \\     <\\  / \\     <\\ ", width);
-    centerPrint("\\o/     o/ \\o/     o/  \\o/     o/ ", width);
-    centerPrint("  |__  _<|/   |__  _<|/   |__  _<|/  ", width);
-    centerPrint("  |           |           |          ", width);
-    centerPrint(" <o>         <o>         <o>         ", width);
-    centerPrint("  |           |           |          ", width);
-    centerPrint(" / \\         / \\         / \\         ", width);
+
+    cout << R"( 
+ ____                __                                
+/\  _`\             /\ \__                             
+\ \ \L\ \ __    _ __\ \ ,_\ __  __                     
+ \ \ ,__/'__`\ /\`'__\ \ \//\ \/\ \                    
+  \ \ \/\ \L\.\\ \ \/ \ \ \\ \ \_\ \                   
+   \ \_\ \__/.\_\ \_\  \ \__\/`____ \                  
+    \/_/\/__/\/_/\/_/   \/__/`/___/> \                 
+                                /\___/                 
+                                \/__/                  
+ ____    ___                                           
+/\  _`\ /\_ \                                          
+\ \ \L\ \//\ \      __      ___     ___      __  _ __  
+ \ \ ,__/ \ \ \   /'__`\  /' _ `\ /' _ `\  /'__`/\`'__\
+  \ \ \/   \_\ \_/\ \L\.\_/\ \/\ \/\ \/\ \/\  __\ \ \/ 
+   \ \_\   /\____\ \__/.\_\ \_\ \_\ \_\ \_\ \____\ \_\ 
+    \/_/   \/____/\/__/\/_/\/_/\/_/\/_/\/_/\/____/\/_/ 
+                                                       
+                                                       
+ ____                                                  
+/\  _`\                                                
+\ \ \L\ \_ __  ___                                     
+ \ \ ,__/\`'__/ __`\                                   
+  \ \ \/\ \ \/\ \L\ \                                  
+   \ \_\ \ \_\ \____/                                  
+    \/_/  \/_/\/___/                                   
+)" << "\n";
+
     cout << "\n";
     cout << border.substr(0, width) << "\n\n";
 }
+
 
 
 

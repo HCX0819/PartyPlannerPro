@@ -10,15 +10,14 @@ void registerGuest(vector<Guest>& guestList) {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, g.name);
 
+    // Regex for Malaysian phone numbers (+60 followed by 9 or 10 digits)
     regex phonePattern(R"(^\+60\d{9,10}$)");
-    // ^ : start of string
-    // \+60 : must start with +60
-    // \d{9,10} : must have 9 or 10 digits after +60
-    // $ : end of string
+
 
     cout << "Enter phone number (must start with +60): ";
     cin >> g.phone;
 
+    // Keep asking until valid phone number is given
     while (!regex_match(g.phone, phonePattern)) {
         cout << "Invalid. Enter again (format: +60XXXXXXXXX): ";
         cin >> g.phone;
@@ -49,6 +48,7 @@ void editGuestDetail(vector<Guest>& guestList) {
         cout << "Enter the number of the guest to edit (0 to cancel): ";
         cin >> choice;
 
+        // Validate input
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -68,7 +68,7 @@ void editGuestDetail(vector<Guest>& guestList) {
         return;
     }
 
-    Guest& g = guestList[choice - 1];
+    Guest& g = guestList[choice - 1]; // Reference selected guest
 
     int editOption;
     while (true) {
@@ -380,7 +380,6 @@ void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
 void guestManagementMenu(vector<Guest>& guestList) {
     extern string currentUser;
     string filename = currentUser + "_guests.txt";
-    loadGuestsFromFile(guestList, filename);
 
     int choice;
     do {
@@ -391,10 +390,9 @@ void guestManagementMenu(vector<Guest>& guestList) {
         cout << "4. Update RSVP\n";
         cout << "5. View Guest List\n";
         cout << "6. Show RSVP Stats\n";
-        cout << "7. Save to File\n";
-        cout << "8. Load from File\n";
-        cout << "9. Search Guest\n";
-        cout << "10. Return to Main Menu\n";
+        cout << "7. Load from File\n";
+        cout << "8. Search Guest\n";
+        cout << "9. Return to Main Menu\n";
         cout << "==============================\n";
         cout << "Enter choice: ";
         cin >> choice;
@@ -406,17 +404,10 @@ void guestManagementMenu(vector<Guest>& guestList) {
         case 4: updateRSVP(guestList); saveGuestsToFile(guestList, filename); break;
         case 5: viewGuestList(guestList); break;
         case 6: showRSVPStats(guestList); break;
-        case 7: {
-            saveGuestsToFile(guestList, filename);
-            break;
-        }
-        case 8: {
-            loadGuestsFromFile(guestList, filename);
-            break;
-        }
-        case 9: searchGuest(guestList); break;   // <-- Added
-        case 10: cout << "Returning to main menu...\n"; break;
+        case 7: loadGuestsFromFile(guestList, filename); break;
+        case 8: searchGuest(guestList); break;
+        case 9: cout << "Returning to main menu...\n"; break;
         default: cout << "Invalid choice. Please try again.\n"; break;
         }
-    } while (choice != 10);
+    } while (choice != 9);
 }
