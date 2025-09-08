@@ -1,6 +1,8 @@
 #include "payment.h"
 
 static const regex kAmountRegex("^\\d+(?:[.,]\\d{1,2})?$");
+extern vector<Guest> guestList;
+extern string currentUser;
 
 static void printPayment(const Payment& p) {
 	cout << left << setw(14) << "Payment ID" << ": " << p.paymentId << "\n";
@@ -8,7 +10,6 @@ static void printPayment(const Payment& p) {
 	cout << left << setw(14) << "Payer" << ": " << p.payerName << "\n";
 	cout << left << setw(14) << "Amount" << ": " << formatCentsToAmount(p.amountCents) << " " << p.currency << "\n";
 	cout << left << setw(14) << "Method" << ": " << p.method << "\n";
-	cout << left << setw(14) << "Reference" << ": " << p.reference << "\n";
 	cout << left << setw(14) << "Status" << ": " << p.status << "\n";
 	cout << left << setw(14) << "Created At" << ": " << p.createdAt << "\n";
 }
@@ -16,18 +17,15 @@ static void printPayment(const Payment& p) {
 void paymentMenu(const vector<Event>& events) {
 	while (true) {
 		cout << "\n=== Payment Menu ===\n";
-		cout << "1. Record Manual Payment\n";
-		cout << "2. List Payments\n";
-		cout << "3. Create Invoice (RM100 + RM10/guest)\n";
+		cout << "1. Make Payment (RM100/event + RM10/guest)\n";
+		cout << "2. Payment History\n";
 		cout << "0. Back\n";
 		cout << "Choose an option: ";
 		string choice; getline(cin, choice);
 		if (choice == "1") {
-			recordManualPayment(events);
+			recordInvoicePayment(events);
 		} else if (choice == "2") {
 			listPayments();
-		} else if (choice == "3") {
-			recordInvoicePayment(events);
 		} else if (choice == "0") {
 			break;
 		} else {
@@ -56,6 +54,13 @@ void recordManualPayment(const vector<Event>& events) {
 	}
 	const Event& selectedEvent = events[idx - 1];
 
+	//avoid pay two times for the same event
+	if (hasPaidForEvent(selectedEvent.eventName, currentUser)) {
+		cout << "A payment for this event has already been recorded for user '" << currentUser << "'.\n";
+		cout << "Use Payment History to review or choose a different event.\n";
+		return;
+	}
+
 	cout << "Payer name (optional, press Enter to skip): ";
 	string payer; getline(cin, payer);
 
@@ -76,9 +81,6 @@ void recordManualPayment(const vector<Event>& events) {
 	string method; getline(cin, method);
 	if (method.empty()) method = "cash";
 
-	cout << "Reference/Receipt (optional): ";
-	string reference; getline(cin, reference);
-
 	Payment p;
 	p.paymentId = generatePaymentId();
 	p.eventName = selectedEvent.eventName;
@@ -86,7 +88,6 @@ void recordManualPayment(const vector<Event>& events) {
 	p.amountCents = amountCents;
 	p.currency = currency;
 	p.method = method;
-	p.reference = reference;
 	p.status = "succeeded";
 	p.createdAt = currentTimestamp();
 
@@ -133,12 +134,15 @@ void recordInvoicePayment(const vector<Event>& events) {
 	}
 	const Event& selectedEvent = events[idx - 1];
 
-	// Ask how many guests to include in the invoice
-	cout << "Number of guests to include: ";
-	string guestsStr; getline(cin, guestsStr);
-	int numGuests = 0;
-	try { numGuests = stoi(guestsStr); } catch (...) { numGuests = 0; }
-	if (numGuests < 0) numGuests = 0;
+	// Prevent duplicate payments for the same event by the same user (invoice flow)
+	if (hasPaidForEvent(selectedEvent.eventName, currentUser)) {
+		cout << "A payment for this event has already been recorded for user '" << currentUser << "'.\n";
+		cout << "Use Payment History to review or choose a different event.\n";
+		return;
+	}
+
+	// Auto-calculate from current user's loaded guest list
+	int numGuests = static_cast<int>(guestList.size());
 
 	int eventFee = DEFAULT_EVENT_FEE_CENTS;
 	int guestFee = DEFAULT_PER_GUEST_FEE_CENTS * numGuests;
@@ -156,21 +160,26 @@ void recordInvoicePayment(const vector<Event>& events) {
 		return;
 	}
 
-	cout << "Payment method (cash/bank_transfer/other): ";
-	string method; getline(cin, method);
-	if (method.empty()) method = "cash";
-
-	cout << "Reference/Receipt (optional): ";
-	string reference; getline(cin, reference);
+	cout << "Payment Method :\n";
+	cout << "1) E-Wallet\n";
+	cout << "2) Debit Card\n";
+	cout << "3) Credit Card\n";
+	cout << "4) Cash\n";
+	cout << "Choose option: ";
+	string methodChoice; getline(cin, methodChoice);
+	string method;
+	if (methodChoice == "1") method = "E-Wallet";
+	else if (methodChoice == "2") method = "Debit Card";
+	else if (methodChoice == "3") method = "Credit Card";
+	else method = "Cash";
 
 	Payment p;
 	p.paymentId = generatePaymentId();
 	p.eventName = selectedEvent.eventName;
-	p.payerName = "";
+	p.payerName = currentUser;
 	p.amountCents = total;
 	p.currency = "MYR";
 	p.method = method;
-	p.reference = reference;
 	p.status = "succeeded";
 	p.createdAt = currentTimestamp();
 
@@ -193,7 +202,7 @@ void savePaymentsToFile(const vector<Payment>& payments) {
 		// pipe-delimited to align with simple text storage approach used elsewhere
 		out << p.paymentId << "|" << p.eventName << "|" << p.payerName << "|"
 			<< p.amountCents << "|" << p.currency << "|" << p.method << "|"
-			<< p.reference << "|" << p.status << "|" << p.createdAt << "\n";
+			<< p.status << "|" << p.createdAt << "\n";
 	}
 }
 
@@ -212,10 +221,10 @@ void loadPaymentsFromFile(vector<Payment>& payments) {
 		getline(ss, p.paymentId, '|');
 		getline(ss, p.eventName, '|');
 		getline(ss, p.payerName, '|');
-		getline(ss, field, '|'); p.amountCents = stoi(field);
+		getline(ss, field, '|');
+		try { p.amountCents = stoi(field); } catch (...) { p.amountCents = 0; }
 		getline(ss, p.currency, '|');
 		getline(ss, p.method, '|');
-		getline(ss, p.reference, '|');
 		getline(ss, p.status, '|');
 		getline(ss, p.createdAt, '|');
 		payments.push_back(p);
@@ -265,6 +274,32 @@ string formatCentsToAmount(int cents) {
 	int absCents = negative ? -cents : cents;
 	ss << (negative ? "-" : "") << (absCents / 100) << "." << setw(2) << setfill('0') << (absCents % 100);
 	return ss.str();
+}
+
+bool hasPaidForEvent(const string& eventName, const string& /*username*/) {
+	ifstream in(PAYMENTS_FILE);
+	if (!in) return false;
+	string line;
+	auto trim = [](const string& s){ size_t a=s.find_first_not_of(" \t\r\n"); if(a==string::npos) return string(""); size_t b=s.find_last_not_of(" \t\r\n"); return s.substr(a,b-a+1); };
+	auto lower = [](string s){ transform(s.begin(), s.end(), s.begin(), [](unsigned char c){ return (char)tolower(c); }); return s; };
+	string target = lower(trim(eventName));
+	while (getline(in, line)) {
+		if (line.empty()) continue;
+		stringstream ss(line);
+		string id, event, payer, amount, currency, method, status, createdAt;
+		getline(ss, id, '|');
+		getline(ss, event, '|');
+		getline(ss, payer, '|');
+		getline(ss, amount, '|');
+		getline(ss, currency, '|');
+		getline(ss, method, '|');
+		getline(ss, status, '|');
+		getline(ss, createdAt, '|');
+		if (lower(trim(event)) == target && lower(trim(status)) == "succeeded") {
+			return true;
+		}
+	}
+	return false;
 }
 
 

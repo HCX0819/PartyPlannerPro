@@ -11,7 +11,6 @@ struct Payment {
 	int amountCents = 0;    // Store in cents to avoid float errors
 	string currency;        // e.g., "USD"
 	string method;          // "cash", "bank_transfer", etc.
-	string reference;       // Receipt/reference number
 	string status;          // "succeeded", "failed", "refunded"
 	string createdAt;       // ISO-like timestamp string
 };
@@ -38,6 +37,7 @@ string generatePaymentId();
 string currentTimestamp();
 int parseAmountToCents(const string& input);
 string formatCentsToAmount(int cents);
+bool hasPaidForEvent(const string& eventName, const string& username);
 
 #endif
 
