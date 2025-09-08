@@ -1,6 +1,7 @@
 #include "login.h"
 #include <ctime>
 #include <cstdlib>
+#include <limits>
 
 static const char* kUserDbFile = "users.db";
 
@@ -119,12 +120,18 @@ static bool handleSignUp() {
     string password; cin >> password;
     if (password.size() < 6) {
         cout << "Password too short. Please use at least 6 characters.\n";
+        cout << "Press Enter to continue...";
+        cin.ignore();
+        cin.get();
         return false;
     }
 
     vector<UserAccount> users = loadUsers();
     if (usernameExists(users, username)) {
         cout << "Username already exists.\n";
+        cout << "Press Enter to continue...";
+        cin.ignore();
+        cin.get();
         return false;
     }
 
@@ -132,6 +139,9 @@ static bool handleSignUp() {
     string hashed = hashPassword(salt, password);
     saveUser({ username, salt, hashed });
     cout << "Account created. You can now log in.\n";
+    cout << "Press Enter to continue...";
+    cin.ignore();
+    cin.get();
     return true;
 }
 

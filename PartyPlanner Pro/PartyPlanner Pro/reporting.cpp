@@ -259,7 +259,7 @@ void reportingMenu(const vector<Guest>& guestList, const vector<Event>& events) 
         cout << "2. Generate Detailed Guest List\n";
         cout << "3. Export Summary to CSV\n";
         cout << "4. Export Guest List to CSV\n";
-        cout << "5. Back to Main Menu\n";
+        cout << "0. Back to Main Menu\n";
         cout << "Enter choice: ";
         
         if (!(cin >> choice)) {
@@ -274,7 +274,7 @@ void reportingMenu(const vector<Guest>& guestList, const vector<Event>& events) 
         case 2: generateDetailedReport(guestList); break;
         case 3: exportSummaryToCSV(guestList, events); break;
         case 4: exportDetailedToCSV(guestList); break;
-        case 5: break;
+        case 0: break;
         default: cout << "Invalid choice.\n"; break;
         }
     } while (choice != 5);

@@ -6,6 +6,7 @@
 #include "event_booking.h"
 #include <fstream>
 #include <sstream>
+#include <limits>
 
 vector<Guest> guestList;  // define global variable
 vector<Event> eventList;  // define global event list
@@ -60,19 +61,39 @@ int main() {
         bool shouldLogout = false;
         do {
             cout << "\n===== PartyPlanner Pro =====\n";
-            cout << "1. Guest Management\n";
-            cout << "2. Food & Drink Selection\n";
-            cout << "3. Reporting & Summary\n";
-            cout << "4. Event Bookings\n";
+            cout << "1. Event Bookings\n";
+            cout << "2. Guest Management\n";
+            cout << "3. Food & Drink Selection\n";
+            cout << "4. Reporting & Summary\n";
             cout << "5. Log Out\n";
             cout << "Enter choice: ";
             cin >> choice;
 
             switch (choice) {
-            case 1: guestManagementMenu(guestList); break;
-            case 2: foodMenu(guestList); break;
-            case 3: reportingMenu(guestList, eventList); break;
-            case 4: eventBookingMenu(guestList); break;
+            case 1: eventBookingMenu(guestList); break;
+            case 2: {
+                if (eventList.empty()) {
+                    cout << "No events found. Please create an event first.\n";
+                    cout << "Press Enter to continue...";
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cin.get();
+                    break;
+                }
+                guestManagementMenu(guestList);
+                break;
+            }
+            case 3: {
+                if (eventList.empty()) {
+                    cout << "No events found. Please create an event first.\n";
+                    cout << "Press Enter to continue...";
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cin.get();
+                    break;
+                }
+                foodMenu(guestList);
+                break;
+            }
+            case 4: reportingMenu(guestList, eventList); break;
             case 5: {
                 saveEventsToFile(eventList); // persist events before logout
                 // Save guest data before logout

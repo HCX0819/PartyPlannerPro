@@ -375,7 +375,7 @@ void foodMenu(vector<Guest>& guestList) {
         cout << " 2. Edit Guest Food Selection\n";
         cout << " 3. View All Food Choices\n";
         cout << " 4. Calculate Food Budget\n";
-        cout << " 5. Return to Main Menu\n\n";
+        cout << " 0. Return to Main Menu\n\n";
         cout << string(45, '-') << "\n";
         cout << "Enter choice: ";
 
@@ -399,7 +399,7 @@ void foodMenu(vector<Guest>& guestList) {
         case 4:
             calculateFoodBudget(guestList);
             break;
-        case 5:
+        case 0:
             cout << "Returning to main menu...\n";
             break;
         default:
