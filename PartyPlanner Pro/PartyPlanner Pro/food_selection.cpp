@@ -403,8 +403,8 @@ void foodMenu(vector<Guest>& guestList) {
             cout << "Returning to main menu...\n";
             break;
         default:
-            cout << "Invalid choice. Please select 1-5.\n";
+            cout << "Invalid choice. Please select 0-4.\n";
             break;
         }
-    } while (choice != 5);
+    } while (choice != 0);
 }

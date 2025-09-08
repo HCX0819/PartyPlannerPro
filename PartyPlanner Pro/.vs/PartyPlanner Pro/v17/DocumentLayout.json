@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\reporting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,8 +49,37 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
+              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "RelativeToolTip": "PartyPlanner Pro\\main.cpp",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAEYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-27T05:13:58.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "reporting.cpp",
+              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
+              "RelativeDocumentMoniker": "PartyPlanner Pro\\reporting.cpp",
+              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
+              "RelativeToolTip": "PartyPlanner Pro\\reporting.cpp",
+              "ViewState": "AQIAAOEAAAAAAAAAAAAAABYBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-27T05:14:28.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "event_booking.cpp",
               "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\event_booking.cpp",
@@ -58,12 +87,11 @@
               "RelativeToolTip": "PartyPlanner Pro\\event_booking.cpp",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-08T10:58:19.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-08T10:58:19.016Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "login.cpp",
               "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\login.cpp",
@@ -71,24 +99,11 @@
               "RelativeToolTip": "PartyPlanner Pro\\login.cpp",
               "ViewState": "AQIAACkAAAAAAAAAAAAgwDoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-06T13:39:32.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-06T13:39:32.661Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
-              "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
-              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp*",
-              "RelativeToolTip": "PartyPlanner Pro\\main.cpp*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-27T05:13:58.472Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "food_selection.h",
               "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\food_selection.h",
@@ -101,25 +116,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "reporting.cpp",
-              "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
-              "RelativeDocumentMoniker": "PartyPlanner Pro\\reporting.cpp",
-              "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp*",
-              "RelativeToolTip": "PartyPlanner Pro\\reporting.cpp*",
-              "ViewState": "AQIAAAsBAAAAAAAAAAAAABYBAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-27T05:14:28.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "food_selection.cpp",
               "DocumentMoniker": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\food_selection.cpp",
               "ToolTip": "C:\\Users\\ACER\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp*",
               "RelativeToolTip": "PartyPlanner Pro\\food_selection.cpp*",
-              "ViewState": "AQIAAD4BAAAAAAAAAAAAAJEBAAAOAAAA",
+              "ViewState": "AQIAAHsBAAAAAAAAAAAAAIEBAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-08-27T05:13:08.693Z",
               "EditorCaption": ""
