@@ -4,6 +4,7 @@
 #include "reporting.h"
 #include "login.h"
 #include "event_booking.h"
+#include "payment.h"
 #include <fstream>
 #include <sstream>
 #include <limits>
@@ -65,7 +66,8 @@ int main() {
             cout << "2. Guest Management\n";
             cout << "3. Food & Drink Selection\n";
             cout << "4. Reporting & Summary\n";
-            cout << "5. Log Out\n";
+            cout << "5. Payments\n";
+            cout << "6. Log Out\n";
             cout << "Enter choice: ";
             cin >> choice;
 
@@ -95,6 +97,12 @@ int main() {
             }
             case 4: reportingMenu(guestList, eventList); break;
             case 5: {
+                // Clear leftover newline before switching to getline-based input in payments
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                paymentMenu(eventList);
+                break;
+            }
+            case 6: {
                 saveEventsToFile(eventList); // persist events before logout
                 // Save guest data before logout
                 string guestFilename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";

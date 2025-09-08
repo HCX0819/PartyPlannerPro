@@ -131,12 +131,14 @@
     <ClInclude Include="event_booking.h" />
     <ClInclude Include="food_selection.h" />
     <ClInclude Include="guest_management.h" />
+    <ClInclude Include="payment.h" />
     <ClInclude Include="reporting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="event_booking.cpp" />
     <ClCompile Include="food_selection.cpp" />
     <ClCompile Include="guest_management.cpp" />
+    <ClCompile Include="payment.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="reporting.cpp" />
