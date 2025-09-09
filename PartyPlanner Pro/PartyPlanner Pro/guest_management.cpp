@@ -111,8 +111,6 @@ void editGuestDetail(vector<Guest>& guestList) {
     }
 }
 
-
-
 void deleteGuest(vector<Guest>& guestList) {
     if (guestList.empty()) {
         cout << "No guests registered yet.\n";
@@ -205,7 +203,8 @@ void updateRSVP(vector<Guest>& guestList) {
         for (auto& c : reply) c = toupper(c);
 
         if (reply == "YES" || reply == "NO") {
-            guestList[choice - 1].rsvp = reply;  // stored as YES or NO
+            // Convert to title case for consistency
+            guestList[choice - 1].rsvp = (reply == "YES") ? "Yes" : "No";
             cout << "RSVP updated!\n";
             break;
         }

@@ -1,4 +1,5 @@
 #include "reporting.h"
+#include "food_selection.h"
 #include <ctime>
 #include <cstdlib>
 #include <unordered_map>
@@ -34,21 +35,17 @@ void generateSummary(const vector<Guest>& guestList, const vector<Event>& events
     }
 
     int yesCount = 0, noCount = 0, notResponded = 0;
-    int foodCount[5] = { 0 };
     int noFoodCount = 0;
     double attendanceRate = 0.0;
 
     for (const auto& g : guestList) {
-        if (g.rsvp == "Yes") yesCount++;
-        else if (g.rsvp == "No") noCount++;
+        if (g.rsvp == "Yes" || g.rsvp == "YES") yesCount++;
+        else if (g.rsvp == "No" || g.rsvp == "NO") noCount++;
         else notResponded++;
 
-        if (g.food == "Pizza") foodCount[0]++;
-        else if (g.food == "Cake") foodCount[1]++;
-        else if (g.food == "Drinks") foodCount[2]++;
-        else if (g.food == "Sandwich") foodCount[3]++;
-        else if (g.food == "Salad") foodCount[4]++;
-        else if (g.food == "None") noFoodCount++;
+        if (g.food.empty() || g.food == "None") {
+            noFoodCount++;
+        }
     }
 
     // Calculate attendance rate
@@ -66,12 +63,15 @@ void generateSummary(const vector<Guest>& guestList, const vector<Event>& events
     // Food Preferences
     cout << "FOOD PREFERENCES:\n";
     cout << string(30, '-') << "\n";
-    cout << left << setw(15) << "Pizza:" << right << setw(10) << foodCount[0] << "\n";
-    cout << left << setw(15) << "Cake:" << right << setw(10) << foodCount[1] << "\n";
-    cout << left << setw(15) << "Drinks:" << right << setw(10) << foodCount[2] << "\n";
-    cout << left << setw(15) << "Sandwich:" << right << setw(10) << foodCount[3] << "\n";
-    cout << left << setw(15) << "Salad:" << right << setw(10) << foodCount[4] << "\n";
-    cout << left << setw(15) << "No Selection:" << right << setw(10) << noFoodCount << "\n\n";
+    
+    // Get food preferences using the proper food counting function
+    vector<pair<string, int>> foodPrefs = getAllFoodPreferences(guestList);
+    
+    // Display food preferences from the food menu
+    for (const auto& foodPair : foodPrefs) {
+        cout << left << setw(20) << (foodPair.first + ":") << right << setw(10) << foodPair.second << "\n";
+    }
+    cout << left << setw(20) << "No Selection:" << right << setw(10) << noFoodCount << "\n\n";
 
     // Recommendations
     cout << "RECOMMENDATIONS:\n";
@@ -88,12 +88,11 @@ void generateSummary(const vector<Guest>& guestList, const vector<Event>& events
     // Find most popular food
     int maxFood = 0;
     string mostPopular = "None";
-    string foodNames[] = { "Pizza", "Cake", "Drinks", "Sandwich", "Salad" };
 
-    for (int i = 0; i < 5; i++) {
-        if (foodCount[i] > maxFood) {
-            maxFood = foodCount[i];
-            mostPopular = foodNames[i];
+    for (const auto& foodPair : foodPrefs) {
+        if (foodPair.second > maxFood) {
+            maxFood = foodPair.second;
+            mostPopular = foodPair.first;
         }
     }
 
@@ -129,9 +128,9 @@ void generateDetailedReport(const vector<Guest>& guestList) {
 
     for (const auto& g : guestList) {
         string rsvpStatus = g.rsvp;
-        if (g.rsvp == "Yes") rsvpStatus = "[YES]";
-        else if (g.rsvp == "No") rsvpStatus = "[NO]";
-        else rsvpStatus = "[PENDING] " + g.rsvp;
+        if (g.rsvp == "Yes" || g.rsvp == "YES") rsvpStatus = "[YES]";
+        else if (g.rsvp == "No" || g.rsvp == "NO") rsvpStatus = "[NO]";
+        else rsvpStatus = g.rsvp;
 
         cout << left << setw(25) << g.name
             << setw(15) << g.phone
@@ -171,14 +170,16 @@ void exportSummaryToCSV(const vector<Guest>& guestList, const vector<Event>& eve
     
     // Guest statistics
     int yesCount = 0, noCount = 0, notResponded = 0;
-    unordered_map<string, int> foodCounts;
+    int noFoodCount = 0;
     
     for (const auto& g : guestList) {
-        if (g.rsvp == "Yes") yesCount++;
-        else if (g.rsvp == "No") noCount++;
+        if (g.rsvp == "Yes" || g.rsvp == "YES") yesCount++;
+        else if (g.rsvp == "No" || g.rsvp == "NO") noCount++;
         else notResponded++;
         
-        foodCounts[g.food]++;
+        if (g.food.empty() || g.food == "None") {
+            noFoodCount++;
+        }
     }
     
     double attendanceRate = guestList.size() > 0 ? (double)yesCount / guestList.size() * 100.0 : 0.0;
@@ -189,10 +190,12 @@ void exportSummaryToCSV(const vector<Guest>& guestList, const vector<Event>& eve
     file << "Guests,Not Responded," << notResponded << "\n";
     file << "Guests,Attendance Rate %," << fixed << setprecision(1) << attendanceRate << "\n";
     
-    // Food preferences
-    for (const auto& foodPair : foodCounts) {
+    // Food preferences using proper food counting
+    vector<pair<string, int>> foodPrefs = getAllFoodPreferences(guestList);
+    for (const auto& foodPair : foodPrefs) {
         file << "Food," << foodPair.first << "," << foodPair.second << "\n";
     }
+    file << "Food,No Selection," << noFoodCount << "\n";
     
     file.close();
     cout << "\nSummary report exported to: " << filename << "\n";

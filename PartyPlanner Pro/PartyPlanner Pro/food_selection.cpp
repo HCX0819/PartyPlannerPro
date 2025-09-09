@@ -148,82 +148,99 @@ void chooseFood(vector<Guest>& guestList) {
         return;
     }
 
-    string name;
-    cout << "\nEnter guest name to select food: ";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(cin, name);
+    // Display registered guests with numbers
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "                REGISTERED GUESTS\n";
+    cout << string(60, '=') << "\n";
+    cout << left << setw(5) << "No." << setw(25) << "Guest Name" << setw(15) << "RSVP Status" << "Phone\n";
+    cout << string(60, '-') << "\n";
+    
+    for (int i = 0; i < guestList.size(); i++) {
+        cout << left << setw(5) << (i + 1) << setw(25) << guestList[i].name 
+             << setw(15) << guestList[i].rsvp << guestList[i].phone << "\n";
+    }
+    cout << string(60, '=') << "\n";
 
-    // Input validation
-    if (name.empty()) {
-        cout << "Error: Guest name cannot be empty.\n";
+    int guestChoice;
+    while (true) {
+        cout << "\nEnter guest number to select food (0 to cancel): ";
+        cin >> guestChoice;
+
+        if (cin.fail()) {
+            cout << "Invalid input. Please enter a number.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (guestChoice < 0 || guestChoice > guestList.size()) {
+            cout << "Invalid choice. Please select 1-" << guestList.size() << " or 0 to cancel.\n";
+            continue;
+        }
+        break;
+    }
+
+    if (guestChoice == 0) {
+        cout << "Food selection cancelled.\n";
         return;
     }
 
-    for (auto& g : guestList) {
-        if (guestNameMatches(g.name, name)) {
-            int choice;
-            do {
-                int currentCount = countFoodSelections(g.food);
+    Guest& g = guestList[guestChoice - 1];
+    int choice;
+    do {
+        int currentCount = countFoodSelections(g.food);
 
-                cout << "\nMaximum: 5 selections\n";
-                cout << string(50, '=') << "\n";
-                cout << "                PPP FOOD MENU\n";
-                cout << string(50, '=') << "\n";
-                cout << "\nGuest: " << g.name << "\n";
-                cout << "Current choices (" << currentCount << "/5): "
-                    << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n";
-                cout << "\n" << string(50, '-') << "\n";
+        cout << "\nMaximum: 5 selections\n";
+        cout << "\nGuest: " << g.name << "\n";
+        cout << "Current choices (" << currentCount << "/5): "
+            << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n";
 
-                displayFoodMenu();
-                cout << "\nEnter choice: ";
+        displayFoodMenu();
+        cout << "\nEnter choice: ";
 
-                if (!(cin >> choice)) {
-                    cout << "Invalid input. Please enter a number.\n";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    continue;
-                }
-
-                if (choice == 0) {
-                    cout << "\nFinished selecting food.\n";
-                    break;
-                }
-
-                string newFood = getFoodName(choice);
-                if (newFood.empty()) {
-                    cout << "Invalid choice. Please select 1-11 or 0 to finish.\n";
-                    continue;
-                }
-
-                // Check if already at maximum
-                if (currentCount >= 5) {
-                    cout << "Error: Maximum 5 food selections allowed. You have already selected 5 items.\n";
-                    continue;
-                }
-
-                // Prevent duplicates
-                if (!foodAlreadyExists(g.food, newFood)) {
-                    if (!g.food.empty() && g.food != "None") {
-                        g.food += ", " + newFood;
-                    }
-                    else {
-                        g.food = newFood;
-                    }
-                    cout << "\nAdded " << newFood << " for " << g.name << ".\n";
-                }
-                else {
-                    cout << "\n" << g.name << " already selected " << newFood << ".\n";
-                }
-            } while (choice != 0);
-
-            // Save changes
-            if (saveGuestData(guestList)) {
-                cout << "\nFood selections saved successfully.\n";
-            }
-            return;
+        if (!(cin >> choice)) {
+            cout << "Invalid input. Please enter a number.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
         }
+
+        if (choice == 0) {
+            cout << "\nFinished selecting food.\n";
+            break;
+        }
+
+        string newFood = getFoodName(choice);
+        if (newFood.empty()) {
+            cout << "Invalid choice. Please select 1-11 or 0 to finish.\n";
+            continue;
+        }
+
+        // Check if already at maximum
+        if (currentCount >= 5) {
+            cout << "Error: Maximum 5 food selections allowed. You have already selected 5 items.\n";
+            continue;
+        }
+
+        // Prevent duplicates
+        if (!foodAlreadyExists(g.food, newFood)) {
+            if (!g.food.empty() && g.food != "None") {
+                g.food += ", " + newFood;
+            }
+            else {
+                g.food = newFood;
+            }
+            cout << "\nAdded " << newFood << " for " << g.name << ".\n";
+        }
+        else {
+            cout << "\n" << g.name << " already selected " << newFood << ".\n";
+        }
+    } while (choice != 0);
+
+    // Save changes
+    if (saveGuestData(guestList)) {
+        cout << "\nFood selections saved successfully.\n";
     }
-    cout << "Guest not found.\n";
 }
 
 void editGuestFood(vector<Guest>& guestList) {
@@ -232,95 +249,112 @@ void editGuestFood(vector<Guest>& guestList) {
         return;
     }
 
-    string name;
-    cout << "\nEnter guest name to edit food: ";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(cin, name);
+    // Display registered guests with numbers
+    cout << "\n" << string(60, '=') << "\n";
+    cout << "                REGISTERED GUESTS\n";
+    cout << string(60, '=') << "\n";
+    cout << left << setw(5) << "No." << setw(25) << "Guest Name" << setw(15) << "RSVP Status" << "Phone\n";
+    cout << string(60, '-') << "\n";
+    
+    for (int i = 0; i < guestList.size(); i++) {
+        cout << left << setw(5) << (i + 1) << setw(25) << guestList[i].name 
+             << setw(15) << guestList[i].rsvp << guestList[i].phone << "\n";
+    }
+    cout << string(60, '=') << "\n";
 
-    // Input validation
-    if (name.empty()) {
-        cout << "Error: Guest name cannot be empty.\n";
+    int guestChoice;
+    while (true) {
+        cout << "\nEnter guest number to edit food (0 to cancel): ";
+        cin >> guestChoice;
+
+        if (cin.fail()) {
+            cout << "Invalid input. Please enter a number.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        if (guestChoice < 0 || guestChoice > guestList.size()) {
+            cout << "Invalid choice. Please select 1-" << guestList.size() << " or 0 to cancel.\n";
+            continue;
+        }
+        break;
+    }
+
+    if (guestChoice == 0) {
+        cout << "Food editing cancelled.\n";
         return;
     }
 
-    for (auto& g : guestList) {
-        if (guestNameMatches(g.name, name)) {
-            cout << "\nCurrent food choices for " << g.name << ": "
-                << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n\n";
-            cout << "Do you want to clear and reselect? (y/n): ";
-            char confirm;
-            cin >> confirm;
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
+    Guest& g = guestList[guestChoice - 1];
+    cout << "\nCurrent food choices for " << g.name << ": "
+        << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n\n";
+    cout << "Do you want to clear and reselect? (y/n): ";
+    char confirm;
+    cin >> confirm;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
 
-            if (confirm == 'y' || confirm == 'Y') {
-                g.food = "None";  // reset
-                int choice;
-                do {
-                    int currentCount = countFoodSelections(g.food);
+    if (confirm == 'y' || confirm == 'Y') {
+        g.food = "None";  // reset
+        int choice;
+        do {
+            int currentCount = countFoodSelections(g.food);
 
-                    cout << "\nMaximum: 5 selections\n";
-                    cout << string(50, '=') << "\n";
-                    cout << "            EDIT FOOD SELECTION\n";
-                    cout << string(50, '=') << "\n";
-                    cout << "\nGuest: " << g.name << "\n";
-                    cout << "Current choices (" << currentCount << "/5): "
-                        << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n";
-                    cout << "\n" << string(50, '-') << "\n";
+            cout << "\nMaximum: 5 selections\n";
+            cout << "\nGuest: " << g.name << "\n";
+            cout << "Current choices (" << currentCount << "/5): "
+                << (g.food.empty() || g.food == "None" ? "None" : g.food) << "\n";
 
-                    displayFoodMenu();
-                    cout << "\nEnter choice: ";
+            displayFoodMenu();
+            cout << "\nEnter choice: ";
 
-                    if (!(cin >> choice)) {
-                        cout << "Invalid input. Please enter a number.\n";
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        continue;
-                    }
+            if (!(cin >> choice)) {
+                cout << "Invalid input. Please enter a number.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
 
-                    if (choice == 0) {
-                        cout << "\nFinished editing food selections.\n";
-                        break;
-                    }
+            if (choice == 0) {
+                cout << "\nFinished editing food selections.\n";
+                break;
+            }
 
-                    string newFood = getFoodName(choice);
-                    if (newFood.empty()) {
-                        cout << "Invalid choice. Please select 1-11 or 0 to finish.\n";
-                        continue;
-                    }
+            string newFood = getFoodName(choice);
+            if (newFood.empty()) {
+                cout << "Invalid choice. Please select 1-11 or 0 to finish.\n";
+                continue;
+            }
 
-                    // Check if already at maximum
-                    if (currentCount >= 5) {
-                        cout << "Error: Maximum 5 food selections allowed. You have already selected 5 items.\n";
-                        continue;
-                    }
+            // Check if already at maximum
+            if (currentCount >= 5) {
+                cout << "Error: Maximum 5 food selections allowed. You have already selected 5 items.\n";
+                continue;
+            }
 
-                    // Prevent duplicates
-                    if (!foodAlreadyExists(g.food, newFood)) {
-                        if (!g.food.empty() && g.food != "None") {
-                            g.food += ", " + newFood;
-                        }
-                        else {
-                            g.food = newFood;
-                        }
-                        cout << "\nAdded " << newFood << " for " << g.name << ".\n";
-                    }
-                    else {
-                        cout << "\n" << g.name << " already selected " << newFood << ".\n";
-                    }
-                } while (choice != 0);
-
-                // Save changes
-                if (saveGuestData(guestList)) {
-                    cout << "\nFood selections updated and saved successfully.\n";
+            // Prevent duplicates
+            if (!foodAlreadyExists(g.food, newFood)) {
+                if (!g.food.empty() && g.food != "None") {
+                    g.food += ", " + newFood;
                 }
+                else {
+                    g.food = newFood;
+                }
+                cout << "\nAdded " << newFood << " for " << g.name << ".\n";
             }
             else {
-                cout << "Edit cancelled.\n";
+                cout << "\n" << g.name << " already selected " << newFood << ".\n";
             }
-            return;
+        } while (choice != 0);
+
+        // Save changes
+        if (saveGuestData(guestList)) {
+            cout << "\nFood selections updated and saved successfully.\n";
         }
     }
-    cout << "Guest not found.\n";
+    else {
+        cout << "Edit cancelled.\n";
+    }
 }
 
 void viewGuestChoices(const vector<Guest>& guestList) {
@@ -342,28 +376,6 @@ void viewGuestChoices(const vector<Guest>& guestList) {
     cout << "\n" << string(60, '=') << "\n";
 }
 
-// Calculate total food budget
-void calculateFoodBudget(const vector<Guest>& guestList) {
-    int foodSelectedCount = 0;
-
-    for (const auto& g : guestList) {
-        // Count guests who have selected food (not empty and not "None")
-        if (!g.food.empty() && g.food != "None") {
-            foodSelectedCount++;
-        }
-    }
-
-    double totalCost = foodSelectedCount * COST_PER_PERSON;
-
-    cout << "\n" << string(45, '=') << "\n";
-    cout << "            FOOD BUDGET SUMMARY\n";
-    cout << string(45, '=') << "\n\n";
-    cout << "Guests Who Selected Food: " << foodSelectedCount << "\n";
-    cout << "Cost per Person: RM" << fixed << setprecision(2) << COST_PER_PERSON << "\n\n";
-    cout << string(45, '-') << "\n";
-    cout << "TOTAL FOOD BUDGET: RM" << fixed << setprecision(2) << totalCost << "\n";
-    cout << string(45, '=') << "\n";
-}
 
 void foodMenu(vector<Guest>& guestList) {
     int choice;
@@ -374,7 +386,6 @@ void foodMenu(vector<Guest>& guestList) {
         cout << " 1. Choose Food for Guest\n";
         cout << " 2. Edit Guest Food Selection\n";
         cout << " 3. View All Food Choices\n";
-        cout << " 4. Calculate Food Budget\n";
         cout << " 0. Return to Main Menu\n\n";
         cout << string(45, '-') << "\n";
         cout << "Enter choice: ";
@@ -396,14 +407,11 @@ void foodMenu(vector<Guest>& guestList) {
         case 3:
             viewGuestChoices(guestList);
             break;
-        case 4:
-            calculateFoodBudget(guestList);
-            break;
         case 0:
             cout << "Returning to main menu...\n";
             break;
         default:
-            cout << "Invalid choice. Please select 0-4.\n";
+            cout << "Invalid choice. Please select 0-3.\n";
             break;
         }
     } while (choice != 0);

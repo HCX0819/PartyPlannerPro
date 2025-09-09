@@ -16,7 +16,6 @@ bool saveGuestData(const std::vector<Guest>& guestList);
 void chooseFood(std::vector<Guest>& guestList);
 void editGuestFood(std::vector<Guest>& guestList);
 void viewGuestChoices(const std::vector<Guest>& guestList);
-void calculateFoodBudget(const std::vector<Guest>& guestList);
 void foodMenu(std::vector<Guest>& guestList);
 
 #endif

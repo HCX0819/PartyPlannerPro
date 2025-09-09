@@ -296,9 +296,14 @@ bool isValidDate(const string& date) {
         !isdigit(yearStr[0]) || !isdigit(yearStr[1]) ||
         !isdigit(yearStr[2]) || !isdigit(yearStr[3])) return false;
 
-    int day = stoi(dayStr);
-    int month = stoi(monthStr);
-    int year = stoi(yearStr);
+    int day, month, year;
+    try {
+        day = stoi(dayStr);
+        month = stoi(monthStr);
+        year = stoi(yearStr);
+    } catch (...) {
+        return false; // Invalid date format
+    }
 
     if (year < 1900 || year > 2100) return false;
     if (month < 1 || month > 12) return false;
@@ -322,8 +327,13 @@ bool isValidTime(const string& time) {
     if (!isdigit(hourStr[0]) || !isdigit(hourStr[1]) ||
         !isdigit(minuteStr[0]) || !isdigit(minuteStr[1])) return false;
 
-    int hour = stoi(hourStr);
-    int minute = stoi(minuteStr);
+    int hour, minute;
+    try {
+        hour = stoi(hourStr);
+        minute = stoi(minuteStr);
+    } catch (...) {
+        return false; // Invalid time format
+    }
 
     return !(hour < 0 || hour > 23 || minute < 0 || minute > 59);
 }

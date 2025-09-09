@@ -101,16 +101,25 @@ void recordManualPayment(const vector<Event>& events, const string& currentUser)
 void listPayments(const string& currentUser) {
 	vector<Payment> payments;
 	loadPaymentsFromFile(payments);
+	
 	if (payments.empty()) {
+		cout << "\n=== Payments ===\n";
 		cout << "No payments recorded yet.\n";
 		return;
 	}
+	
 	cout << "\n=== Payments ===\n";
+	bool hasUserPayments = false;
 	for (const auto& p : payments) {
 		if (p.payerName == currentUser) {
+			hasUserPayments = true;
 			printPayment(p);
 			cout << "-----------------------------\n";
 		}
+	}
+	
+	if (!hasUserPayments) {
+		cout << "No payments found for user: " << currentUser << "\n";
 	}
 }
 
@@ -256,14 +265,14 @@ int parseAmountToCents(const string& input) {
 	replace(s.begin(), s.end(), ',', '.');
 	size_t dot = s.find('.');
 	if (dot == string::npos) {
-		long long dollars = stoll(s);
-		return static_cast<int>(dollars * 100);
+		long long myr = stoll(s);
+		return static_cast<int>(myr * 100);
 	}
-	string dollars = s.substr(0, dot);
+	string myr = s.substr(0, dot);
 	string cents = s.substr(dot + 1);
 	if (cents.size() == 1) cents += "0";
 	if (cents.size() > 2) cents = cents.substr(0, 2);
-	long long d = dollars.empty() ? 0 : stoll(dollars);
+	long long d = myr.empty() ? 0 : stoll(myr);
 	long long c = cents.empty() ? 0 : stoll(cents);
 	return static_cast<int>(d * 100 + c);
 }

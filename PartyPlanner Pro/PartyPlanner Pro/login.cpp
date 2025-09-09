@@ -58,9 +58,6 @@ static void printAuthHeader() {
     cout << border.substr(0, width) << "\n\n";
 }
 
-
-
-
 static string generateSalt() {
     static const char* alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     string salt;
