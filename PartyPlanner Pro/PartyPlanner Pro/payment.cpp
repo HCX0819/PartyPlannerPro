@@ -110,6 +110,7 @@ void listPayments(const string& currentUser) {
 	
 	cout << "\n=== Payments ===\n";
 	bool hasUserPayments = false;
+	
 	for (const auto& p : payments) {
 		if (p.payerName == currentUser) {
 			hasUserPayments = true;
@@ -304,6 +305,7 @@ bool hasPaidForEvent(const string& eventName, const string& username) {
 		getline(ss, method, '|');
 		getline(ss, status, '|');
 		getline(ss, createdAt, '|');
+		
 		if (lower(trim(event)) == target && lower(trim(status)) == "succeeded" && trim(payer) == username) {
 			return true;
 		}

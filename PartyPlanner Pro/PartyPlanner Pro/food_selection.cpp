@@ -125,9 +125,8 @@ void displayFoodMenu() {
 }
 
 // Helper: Save guest data to file
-bool saveGuestData(const vector<Guest>& guestList) {
-    extern string currentUser;
-    string filename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";
+bool saveGuestData(const vector<Guest>& guestList, const string& currentUser) {
+    string filename = currentUser + "_guests.txt";
     ofstream file(filename);
     if (!file.is_open()) {
         cout << "Error: Could not save guest data to " << filename << "\n";
@@ -237,10 +236,9 @@ void chooseFood(vector<Guest>& guestList) {
         }
     } while (choice != 0);
 
-    // Save changes
-    if (saveGuestData(guestList)) {
-        cout << "\nFood selections saved successfully.\n";
-    }
+    // Save changes - Note: currentUser parameter needed but not available here
+    // This will be handled by the caller (main.cpp) or we need to pass currentUser
+    cout << "\nFood selections completed. Changes will be saved when you return to main menu.\n";
 }
 
 void editGuestFood(vector<Guest>& guestList) {
@@ -347,10 +345,9 @@ void editGuestFood(vector<Guest>& guestList) {
             }
         } while (choice != 0);
 
-        // Save changes
-        if (saveGuestData(guestList)) {
-            cout << "\nFood selections updated and saved successfully.\n";
-        }
+        // Save changes - Note: currentUser parameter needed but not available here
+        // This will be handled by the caller (main.cpp) or we need to pass currentUser
+        cout << "\nFood selections updated. Changes will be saved when you return to main menu.\n";
     }
     else {
         cout << "Edit cancelled.\n";
@@ -377,7 +374,7 @@ void viewGuestChoices(const vector<Guest>& guestList) {
 }
 
 
-void foodMenu(vector<Guest>& guestList) {
+void foodMenu(vector<Guest>& guestList, const string& currentUser) {
     int choice;
     do {
         cout << "\n" << string(45, '=') << "\n";

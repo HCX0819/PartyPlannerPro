@@ -142,7 +142,7 @@ static bool handleSignUp() {
     return true;
 }
 
-static bool handleLogIn() {
+static string handleLogIn() {
     printAuthHeader();
     cout << "--- Log in ---\n";
     cout << "Enter username: ";
@@ -158,16 +158,13 @@ static bool handleLogIn() {
                 cout << "Press Enter to continue...";
                 cin.ignore();
                 cin.get();
-                // Set current user for data isolation
-                extern string currentUser;
-                currentUser = username;
-                return true;
+                return username; // Return username on success
             } else {
                 cout << "Invalid password.\n";
                 cout << "Press Enter to try again...";
                 cin.ignore();
                 cin.get();
-                return false;
+                return ""; // Return empty string on failure
             }
         }
     }
@@ -175,10 +172,10 @@ static bool handleLogIn() {
     cout << "Press Enter to try again...";
     cin.ignore();
     cin.get();
-    return false;
+    return ""; // Return empty string on failure
 }
 
-bool authenticationMenu() {
+string authenticationMenu() {
     int choice = 0;
     do {
         printAuthHeader();
@@ -193,9 +190,13 @@ bool authenticationMenu() {
             continue;
         }
         switch (choice) {
-            case 1: if (handleLogIn()) return true; break;
+            case 1: {
+                string username = handleLogIn();
+                if (!username.empty()) return username;
+                break;
+            }
             case 2: handleSignUp(); break;
-            case 3: return false;
+            case 3: return ""; // Return empty string for exit
             default: cout << "Invalid choice.\n"; break;
         }
     } while (true);

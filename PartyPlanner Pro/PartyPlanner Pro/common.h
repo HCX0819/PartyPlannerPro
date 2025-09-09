@@ -27,9 +27,6 @@ struct Guest {
     string food;   // food choice
 };
 
-// Global guest list (shared between modules via reference)
-extern vector<Guest> guestList;
-extern vector<Event> eventList;  // Global event list
-extern string currentUser;  // Current logged in user
+// Global variables removed - now passed as parameters
 
 #endif

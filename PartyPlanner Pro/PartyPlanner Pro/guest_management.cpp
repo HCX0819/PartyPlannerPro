@@ -310,7 +310,8 @@ void showRSVPStats(const vector<Guest>& guestList) {
 
 
 
-void saveGuestsToFile(const vector<Guest>& guestList, const string& filename) {
+void saveGuestsToFile(const vector<Guest>& guestList, const string& currentUser) {
+    string filename = currentUser + "_guests.txt";
     ofstream file(filename);
     if (file.is_open()) {
         for (const auto& guest : guestList) {
@@ -327,7 +328,8 @@ void saveGuestsToFile(const vector<Guest>& guestList, const string& filename) {
     }
 }
 
-void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
+void loadGuestsFromFile(vector<Guest>& guestList, const string& currentUser) {
+    string filename = currentUser + "_guests.txt";
     ifstream file(filename);
     if (!file) {
         // Ensure no stale data remains when the user has no file yet
@@ -376,10 +378,7 @@ void loadGuestsFromFile(vector<Guest>& guestList, const string& filename) {
 }
 
 
-void guestManagementMenu(vector<Guest>& guestList) {
-    extern string currentUser;
-    string filename = currentUser + "_guests.txt";
-
+void guestManagementMenu(vector<Guest>& guestList, const string& currentUser) {
     int choice;
     do {
         cout << "\n====== Guest Management ======\n";
@@ -397,13 +396,13 @@ void guestManagementMenu(vector<Guest>& guestList) {
         cin >> choice;
 
         switch (choice) {
-        case 1: registerGuest(guestList); saveGuestsToFile(guestList, filename); break;
-        case 2: editGuestDetail(guestList); saveGuestsToFile(guestList, filename); break;
-        case 3: deleteGuest(guestList); saveGuestsToFile(guestList, filename); break;
-        case 4: updateRSVP(guestList); saveGuestsToFile(guestList, filename); break;
+        case 1: registerGuest(guestList); saveGuestsToFile(guestList, currentUser); break;
+        case 2: editGuestDetail(guestList); saveGuestsToFile(guestList, currentUser); break;
+        case 3: deleteGuest(guestList); saveGuestsToFile(guestList, currentUser); break;
+        case 4: updateRSVP(guestList); saveGuestsToFile(guestList, currentUser); break;
         case 5: viewGuestList(guestList); break;
         case 6: showRSVPStats(guestList); break;
-        case 7: loadGuestsFromFile(guestList, filename); break;
+        case 7: loadGuestsFromFile(guestList, currentUser); break;
         case 8: searchGuest(guestList); break;
         case 9: cout << "Returning to main menu...\n"; break;
         default: cout << "Invalid choice. Please try again.\n"; break;

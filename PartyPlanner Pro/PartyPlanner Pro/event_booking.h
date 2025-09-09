@@ -11,11 +11,11 @@ struct Event {
 };
 
 // Function prototypes
-void eventBookingMenu(vector<Guest>& guestList);
+void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList);
 void bookEvent(vector<Event>& events);
 void viewEventBookings(const vector<Event>& events);
-void saveEventsToFile(const vector<Event>& events);
-void loadEventsFromFile(vector<Event>& events);
+void saveEventsToFile(const vector<Event>& events, const string& currentUser);
+void loadEventsFromFile(vector<Event>& events, const string& currentUser);
 void deleteEvent(vector<Event>& events);
 void updateEvent(vector<Event>& events);
 

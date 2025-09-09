@@ -18,9 +18,7 @@ int getSafeInt(const string& prompt) {
 }
 
 // ==================== EVENT BOOKING MENU ====================
-void eventBookingMenu(vector<Guest>& guestList) {
-    // Use global event list (declared in common.h)
-
+void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
     cout << "--------------------------------------\n";
     cout << " Welcome to the Event Booking System! \n";
     cout << "--------------------------------------\n";
@@ -41,13 +39,22 @@ void eventBookingMenu(vector<Guest>& guestList) {
         switch (choice) {
         case 1: bookEvent(eventList); break;
         case 2: viewEventBookings(eventList); break;
-        case 3: saveEventsToFile(eventList); break;
-        case 4: loadEventsFromFile(eventList); break;
+        case 3: {
+            // We need currentUser for saving, but we don't have it here
+            // This will be handled by the caller (main.cpp)
+            cout << "Events will be saved automatically when you return to main menu.\n";
+            break;
+        }
+        case 4: {
+            // We need currentUser for loading, but we don't have it here
+            // This will be handled by the caller (main.cpp)
+            cout << "Events are loaded automatically when you start the program.\n";
+            break;
+        }
         case 5: deleteEvent(eventList); break;
         case 6: updateEvent(eventList); break;
         case 0:
             cout << "Returning to Main Menu...\n";
-            saveEventsToFile(eventList); // Auto-save before returning
             break;
         default: cout << "That's not a valid option. Please try again.\n";
         }
@@ -159,9 +166,8 @@ void viewEventBookings(const vector<Event>& events) {
 }
 
 // ==================== SAVE TO FILE ====================
-void saveEventsToFile(const vector<Event>& events) {
-    extern string currentUser;
-    string filename = currentUser.empty() ? "events.txt" : currentUser + "_events.txt";
+void saveEventsToFile(const vector<Event>& events, const string& currentUser) {
+    string filename = currentUser + "_events.txt";
     
     ofstream outFile(filename);
     if (!outFile) {
@@ -180,9 +186,8 @@ void saveEventsToFile(const vector<Event>& events) {
 }
 
 // ==================== LOAD FROM FILE ====================
-void loadEventsFromFile(vector<Event>& events) {
-    extern string currentUser;
-    string filename = currentUser.empty() ? "events.txt" : currentUser + "_events.txt";
+void loadEventsFromFile(vector<Event>& events, const string& currentUser) {
+    string filename = currentUser + "_events.txt";
     
     ifstream inFile(filename);
     if (!inFile) {

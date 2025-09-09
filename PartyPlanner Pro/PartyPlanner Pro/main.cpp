@@ -7,11 +7,7 @@
 #include "payment.h"
 #include <fstream>
 #include <sstream>
-#include <limits>
-
-vector<Guest> guestList;  
-vector<Event> eventList;  
-string currentUser = ""; 
+#include <limits> 
 
 static void clearScreen() {
 #ifdef _WIN32
@@ -22,20 +18,29 @@ static void clearScreen() {
 }
 
 int main() {
+    // Local variables instead of globals
+    vector<Guest> guestList;
+    vector<Event> eventList;
+    string currentUser;
+    
     // allow logout back to login screen
     while (true) {
-        if (!authenticationMenu()) {
+        // Authentication returns username or empty string
+        currentUser = authenticationMenu();
+        if (currentUser.empty()) {
             cout << "Exiting program...\n";
             return 0;
         }
+        
         // Ensure clean state before loading user-specific data
         guestList.clear();
         eventList.clear();
+        
         // Load user-specific data
-        loadEventsFromFile(eventList);
+        loadEventsFromFile(eventList, currentUser);
+        
         // Load user-specific guest data
-        extern string currentUser;
-        string guestFilename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";
+        string guestFilename = currentUser + "_guests.txt";
         ifstream guestFile(guestFilename);
         if (guestFile.is_open()) {
             guestList.clear();
@@ -83,7 +88,7 @@ int main() {
             }
 
             switch (choice) {
-            case 1: eventBookingMenu(guestList); break;
+            case 1: eventBookingMenu(guestList, eventList); break;
             case 2: {
                 if (eventList.empty()) {
                     cout << "No events found. Please create an event first.\n";
@@ -92,7 +97,7 @@ int main() {
                     cin.get();
                     break;
                 }
-                guestManagementMenu(guestList);
+                guestManagementMenu(guestList, currentUser);
                 break;
             }
             case 3: {
@@ -103,7 +108,7 @@ int main() {
                     cin.get();
                     break;
                 }
-                foodMenu(guestList);
+                foodMenu(guestList, currentUser);
                 break;
             }
             case 4: reportingMenu(guestList, eventList); break;
@@ -114,9 +119,9 @@ int main() {
                 break;
             }
             case 6: {
-                saveEventsToFile(eventList); // persist events before logout
+                saveEventsToFile(eventList, currentUser); // persist events before logout
                 // Save guest data before logout
-                string guestFilename = currentUser.empty() ? "guests.txt" : currentUser + "_guests.txt";
+                string guestFilename = currentUser + "_guests.txt";
                 ofstream guestFile(guestFilename);
                 if (guestFile.is_open()) {
                     for (const auto& g : guestList) {

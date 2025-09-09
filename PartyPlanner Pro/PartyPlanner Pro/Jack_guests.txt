@@ -1,4 +1,0 @@
-jack,+60123456789,YES,Pasta, Nasi lemak, Pizza, Burger, Fried Chicken
-l,+60987654321,YES,Tea, Pizza, Burger, Fried Chicken, Pasta
-a,+60123498765,YES,Fried Chicken, French fries, Cake, Soda drink, Pasta
-,+60183818345,No,
