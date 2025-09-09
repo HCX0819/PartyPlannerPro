@@ -277,5 +277,5 @@ void reportingMenu(const vector<Guest>& guestList, const vector<Event>& events) 
         case 0: break;
         default: cout << "Invalid choice.\n"; break;
         }
-    } while (choice != 5);
+    } while (choice != 0);
 }

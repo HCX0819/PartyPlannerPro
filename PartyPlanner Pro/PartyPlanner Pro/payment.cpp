@@ -1,8 +1,6 @@
 #include "payment.h"
 
 static const regex kAmountRegex("^\\d+(?:[.,]\\d{1,2})?$");
-extern vector<Guest> guestList;
-extern string currentUser;
 
 static void printPayment(const Payment& p) {
 	cout << left << setw(14) << "Payment ID" << ": " << p.paymentId << "\n";
@@ -14,7 +12,7 @@ static void printPayment(const Payment& p) {
 	cout << left << setw(14) << "Created At" << ": " << p.createdAt << "\n";
 }
 
-void paymentMenu(const vector<Event>& events) {
+void paymentMenu(const vector<Event>& events, const vector<Guest>& guests, const string& currentUser) {
 	while (true) {
 		cout << "\n=== Payment Menu ===\n";
 		cout << "1. Make Payment (RM100/event + RM10/guest)\n";
@@ -23,7 +21,7 @@ void paymentMenu(const vector<Event>& events) {
 		cout << "Choose an option: ";
 		string choice; getline(cin, choice);
 		if (choice == "1") {
-			recordInvoicePayment(events);
+			recordInvoicePayment(events, guests, currentUser);
 		} else if (choice == "2") {
 			listPayments();
 		} else if (choice == "0") {
@@ -34,7 +32,7 @@ void paymentMenu(const vector<Event>& events) {
 	}
 }
 
-void recordManualPayment(const vector<Event>& events) {
+void recordManualPayment(const vector<Event>& events, const string& currentUser) {
 	if (events.empty()) {
 		cout << "No events available. Create an event first.\n";
 		return;
@@ -114,7 +112,7 @@ void listPayments() {
 	}
 }
 
-void recordInvoicePayment(const vector<Event>& events) {
+void recordInvoicePayment(const vector<Event>& events, const vector<Guest>& guests, const string& currentUser) {
 	if (events.empty()) {
 		cout << "No events available. Create an event first.\n";
 		return;
@@ -141,8 +139,8 @@ void recordInvoicePayment(const vector<Event>& events) {
 		return;
 	}
 
-	// Auto-calculate from current user's loaded guest list
-	int numGuests = static_cast<int>(guestList.size());
+	// Auto-calculate from provided guest list
+	int numGuests = static_cast<int>(guests.size());
 
 	int eventFee = DEFAULT_EVENT_FEE_CENTS;
 	int guestFee = DEFAULT_PER_GUEST_FEE_CENTS * numGuests;

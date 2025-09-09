@@ -22,11 +22,11 @@ const string PAYMENTS_FILE = "payments.txt";
 const int DEFAULT_EVENT_FEE_CENTS = 10000;    // RM100.00
 const int DEFAULT_PER_GUEST_FEE_CENTS = 1000; // RM10.00 per guest
 
-// Core APIs
-void paymentMenu(const vector<Event>& events);
-void recordManualPayment(const vector<Event>& events);
+// Core APIs (no globals)
+void paymentMenu(const vector<Event>& events, const vector<Guest>& guests, const string& currentUser);
+void recordManualPayment(const vector<Event>& events, const string& currentUser);
 void listPayments();
-void recordInvoicePayment(const vector<Event>& events);
+void recordInvoicePayment(const vector<Event>& events, const vector<Guest>& guests, const string& currentUser);
 
 // Storage helpers
 void savePaymentsToFile(const vector<Payment>& payments);

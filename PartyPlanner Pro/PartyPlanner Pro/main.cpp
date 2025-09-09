@@ -99,7 +99,7 @@ int main() {
             case 5: {
                 // Clear leftover newline before switching to getline-based input in payments
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                paymentMenu(eventList);
+                paymentMenu(eventList, guestList, currentUser);
                 break;
             }
             case 6: {
