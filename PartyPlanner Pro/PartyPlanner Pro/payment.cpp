@@ -23,7 +23,7 @@ void paymentMenu(const vector<Event>& events, const vector<Guest>& guests, const
 		if (choice == "1") {
 			recordInvoicePayment(events, guests, currentUser);
 		} else if (choice == "2") {
-			listPayments();
+			listPayments(currentUser);
 		} else if (choice == "0") {
 			break;
 		} else {
@@ -98,7 +98,7 @@ void recordManualPayment(const vector<Event>& events, const string& currentUser)
 	printPayment(p);
 }
 
-void listPayments() {
+void listPayments(const string& currentUser) {
 	vector<Payment> payments;
 	loadPaymentsFromFile(payments);
 	if (payments.empty()) {
@@ -107,8 +107,10 @@ void listPayments() {
 	}
 	cout << "\n=== Payments ===\n";
 	for (const auto& p : payments) {
-		printPayment(p);
-		cout << "-----------------------------\n";
+		if (p.payerName == currentUser) {
+			printPayment(p);
+			cout << "-----------------------------\n";
+		}
 	}
 }
 
@@ -274,7 +276,7 @@ string formatCentsToAmount(int cents) {
 	return ss.str();
 }
 
-bool hasPaidForEvent(const string& eventName, const string& /*username*/) {
+bool hasPaidForEvent(const string& eventName, const string& username) {
 	ifstream in(PAYMENTS_FILE);
 	if (!in) return false;
 	string line;
@@ -293,7 +295,7 @@ bool hasPaidForEvent(const string& eventName, const string& /*username*/) {
 		getline(ss, method, '|');
 		getline(ss, status, '|');
 		getline(ss, createdAt, '|');
-		if (lower(trim(event)) == target && lower(trim(status)) == "succeeded") {
+		if (lower(trim(event)) == target && lower(trim(status)) == "succeeded" && trim(payer) == username) {
 			return true;
 		}
 	}

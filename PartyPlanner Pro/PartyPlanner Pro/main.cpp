@@ -9,9 +9,9 @@
 #include <sstream>
 #include <limits>
 
-vector<Guest> guestList;  // define global variable
-vector<Event> eventList;  // define global event list
-string currentUser = "";  // Current logged in user
+vector<Guest> guestList;  
+vector<Event> eventList;  
+string currentUser = ""; 
 
 static void clearScreen() {
 #ifdef _WIN32
@@ -22,7 +22,7 @@ static void clearScreen() {
 }
 
 int main() {
-    // Authentication loop: allow logout back to login screen
+    // allow logout back to login screen
     while (true) {
         if (!authenticationMenu()) {
             cout << "Exiting program...\n";
