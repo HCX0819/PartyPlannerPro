@@ -204,7 +204,7 @@ void updateRSVP(vector<Guest>& guestList) {
 
         if (reply == "YES" || reply == "NO") {
             // Convert to title case for consistency
-            guestList[choice - 1].rsvp = (reply == "YES") ? "Yes" : "No";
+            guestList[choice - 1].rsvp = reply;
             cout << "RSVP updated!\n";
             break;
         }
@@ -374,7 +374,7 @@ void loadGuestsFromFile(vector<Guest>& guestList, const string& currentUser) {
     }
 
     // Open the file in Notepad only after loading
-    system(("notepad " + filename).c_str());
+    system(("start notepad " + filename).c_str());
 }
 
 

@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\",
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\payment.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\event_booking.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\guest_management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\payment.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\reporting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\event_booking.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A007E660-FE51-4245-81B3-3D8FF7E8BE43}|PartyPlanner Pro\\PartyPlanner Pro.vcxproj|solutionrelative:PartyPlanner Pro\\food_selection.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,12 +42,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -70,41 +66,49 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "guest_management.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp",
-              "RelativeDocumentMoniker": "PartyPlanner Pro\\guest_management.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp",
-              "RelativeToolTip": "PartyPlanner Pro\\guest_management.cpp",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAAAHAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-08T16:36:08.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "payment.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\payment.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\payment.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\payment.cpp",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAkwGsAAAAZAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-08T14:56:06.805Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
+              "Title": "guest_management.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp",
+              "RelativeDocumentMoniker": "PartyPlanner Pro\\guest_management.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\guest_management.cpp*",
+              "RelativeToolTip": "PartyPlanner Pro\\guest_management.cpp*",
+              "ViewState": "AQIAAFoBAAAAAAAAAAAUwGcBAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-08T16:36:08.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "food_selection.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\food_selection.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\food_selection.cpp",
               "ViewState": "AQIAAIkBAAAAAAAAAAAAAI4BAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -113,11 +117,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\main.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\main.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\main.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -126,11 +130,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "reporting.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\reporting.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\reporting.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\reporting.cpp",
               "ViewState": "AQIAADUAAAAAAAAAAAAiwBQAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -139,11 +143,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "event_booking.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\event_booking.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\event_booking.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\event_booking.cpp",
               "ViewState": "AQIAAEwAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -152,24 +156,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "food_selection.h",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\food_selection.h",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\food_selection.h",
               "RelativeToolTip": "PartyPlanner Pro\\food_selection.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-05T11:51:04.915Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-05T11:51:04.915Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "login.cpp",
-              "DocumentMoniker": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp",
               "RelativeDocumentMoniker": "PartyPlanner Pro\\login.cpp",
-              "ToolTip": "C:\\Users\\Jun Jack\\source\\repos\\PartyPlannerPro\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\LATEST NO JOKE CX C\u002B\u002B\\PartyPlanner Pro\\PartyPlanner Pro\\login.cpp",
               "RelativeToolTip": "PartyPlanner Pro\\login.cpp",
               "ViewState": "AQIAAJIAAAAAAAAAAAAgwDsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
