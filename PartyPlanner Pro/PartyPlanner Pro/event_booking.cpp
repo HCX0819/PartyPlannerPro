@@ -1,23 +1,22 @@
 #include "event_booking.h"
 
-// ==================== SAFE INPUT HANDLER ====================
+// Simple function to get integer input safely
 int getSafeInt(const string& prompt) {
     int value;
     while (true) {
         cout << prompt;
         if (cin >> value) {
-            cin.ignore(10000, '\n'); // discard extra input
+            cin.ignore(10000, '\n'); // remove leftover input
             return value;
         }
         else {
-            cin.clear(); // clear error state
-            cin.ignore(10000, '\n'); // discard invalid input
-            cout << "Oops, that doesn't look like a number. Please try again.\n";
+            cin.clear(); 
+            cin.ignore(10000, '\n'); 
+            cout << "Invalid number, please try again.\n";
         }
     }
 }
 
-// ==================== EVENT BOOKING MENU ====================
 void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
     cout << "--------------------------------------\n";
     cout << " Welcome to the Event Booking System! \n";
@@ -25,7 +24,7 @@ void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
 
     int choice;
     do {
-        cout << "\nWhat would you like to do?\n";
+        cout << "\nMenu:\n";
         cout << "1. Book a new Event\n";
         cout << "2. View all Events\n";
         cout << "3. Save Events to File\n";
@@ -40,14 +39,10 @@ void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
         case 1: bookEvent(eventList); break;
         case 2: viewEventBookings(eventList); break;
         case 3: {
-            // We need currentUser for saving, but we don't have it here
-            // This will be handled by the caller (main.cpp)
             cout << "Events will be saved automatically when you return to main menu.\n";
             break;
         }
         case 4: {
-            // We need currentUser for loading, but we don't have it here
-            // This will be handled by the caller (main.cpp)
             cout << "Events are loaded automatically when you start the program.\n";
             break;
         }
@@ -56,17 +51,17 @@ void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
         case 0:
             cout << "Returning to Main Menu...\n";
             break;
-        default: cout << "That's not a valid option. Please try again.\n";
+        default: cout << "Not a valid option, please choose again.\n";
         }
     } while (choice != 0);
 }
 
-// ==================== BOOK EVENT ====================
+// Add a new event
 void bookEvent(vector<Event>& events) {
     Event e;
-    // Removed extra cin.ignore() to prevent skipping first character of next input
+    cin.ignore(); // clear leftover input
 
-    cout << "\nLet's book a new event!\n";
+    cout << "\nBooking a new event...\n";
     cout << "Event Name: ";
     getline(cin, e.eventName);
     while (e.eventName.empty()) {
@@ -74,26 +69,27 @@ void bookEvent(vector<Event>& events) {
         getline(cin, e.eventName);
     }
 
-    // Date & Time with validation and conflict check
+    // get valid date and time
     do {
         cout << "Date (DD/MM/YYYY): ";
         getline(cin, e.date);
         while (!isValidDate(e.date)) {
-            cout << "That date doesn't look right. Please enter again (DD/MM/YYYY): ";
+            cout << "Invalid date. Please enter again (DD/MM/YYYY): ";
             getline(cin, e.date);
         }
 
         cout << "Time (HH:MM): ";
         getline(cin, e.time);
         while (!isValidTime(e.time)) {
-            cout << "That time is invalid. Please enter again (HH:MM): ";
+            cout << "Invalid time. Please enter again (HH:MM): ";
             getline(cin, e.time);
         }
 
+        // check conflict with existing events
         if (isEventConflict(events, e.date, e.time)) {
             char choice;
-            cout << "There's already an event booked on " << e.date << " at " << e.time << ".\n";
-            cout << "Would you like to re-enter the date/time? (Y/N): ";
+            cout << "Another event already exists at this date and time.\n";
+            cout << "Do you want to re-enter? (Y/N): ";
             cin >> choice;
             cin.ignore();
             if (choice == 'Y' || choice == 'y') continue;
@@ -105,7 +101,7 @@ void bookEvent(vector<Event>& events) {
         break;
     } while (true);
 
-    // Location selection menu
+    // Location selection with fixed options + custom option
     int locChoice;
     cout << "\nChoose a Location:\n";
     cout << "1. Home\n";
@@ -138,17 +134,17 @@ void bookEvent(vector<Event>& events) {
     }
 
     events.push_back(e);
-    cout << "Great! Your event has been booked successfully.\n";
+    cout << "Event booked successfully!\n";
 }
 
-// ==================== VIEW EVENTS ====================
+// Show all events
 void viewEventBookings(const vector<Event>& events) {
     if (events.empty()) {
         cout << "No events booked yet.\n";
         return;
     }
 
-    cout << "\nHere are your events:\n";
+    cout << "\nYour booked events:\n";
     cout << left << setw(5) << "No."
         << setw(25) << "Event Name"
         << setw(12) << "Date"
@@ -165,13 +161,13 @@ void viewEventBookings(const vector<Event>& events) {
     }
 }
 
-// ==================== SAVE TO FILE ====================
+// Save all events into a text file
 void saveEventsToFile(const vector<Event>& events, const string& currentUser) {
     string filename = currentUser + "_events.txt";
     
     ofstream outFile(filename);
     if (!outFile) {
-        cout << "Couldn't open file for writing.\n";
+        cout << "Error opening file to save.\n";
         return;
     }
 
@@ -182,16 +178,16 @@ void saveEventsToFile(const vector<Event>& events, const string& currentUser) {
             << e.location << "\n";
     }
     outFile.close();
-    cout << "All events have been saved to file.\n";
+    cout << "Events saved to file.\n";
 }
 
-// ==================== LOAD FROM FILE ====================
+// Load events from file
 void loadEventsFromFile(vector<Event>& events, const string& currentUser) {
     string filename = currentUser + "_events.txt";
     
     ifstream inFile(filename);
     if (!inFile) {
-        cout << "No saved events were found.\n";
+        cout << "No saved events found.\n";
         return;
     }
 
@@ -204,10 +200,10 @@ void loadEventsFromFile(vector<Event>& events, const string& currentUser) {
         events.push_back(e);
     }
     inFile.close();
-    cout << "Events have been loaded from file.\n";
+    cout << "Events loaded from file.\n";
 }
 
-// ==================== DELETE EVENT ====================
+// Delete an event
 void deleteEvent(vector<Event>& events) {
     if (events.empty()) {
         cout << "There are no events to delete.\n";
@@ -223,16 +219,16 @@ void deleteEvent(vector<Event>& events) {
     }
 
     if (choice < 1 || choice >(int)events.size()) {
-        cout << "That's not a valid number.\n";
+        cout << "Invalid number.\n";
         return;
     }
 
     cout << "Deleting: " << events[choice - 1].eventName << "...\n";
     events.erase(events.begin() + (choice - 1));
-    cout << "The event has been removed successfully.\n";
+    cout << "Event deleted successfully.\n";
 }
 
-// ==================== UPDATE EVENT ====================
+// Update an existing event
 void updateEvent(vector<Event>& events) {
     if (events.empty()) {
         cout << "There are no events to update.\n";
@@ -248,7 +244,7 @@ void updateEvent(vector<Event>& events) {
     }
 
     if (choice < 1 || choice >(int)events.size()) {
-        cout << "That's not a valid number.\n";
+        cout << "Invalid number.\n";
         return;
     }
 
@@ -265,7 +261,7 @@ void updateEvent(vector<Event>& events) {
     getline(cin, input);
     if (!input.empty()) {
         while (!isValidDate(input)) {
-            cout << "That date doesn't look right. Enter again (DD/MM/YYYY): ";
+            cout << "Invalid date. Enter again (DD/MM/YYYY): ";
             getline(cin, input);
         }
         e.date = input;
@@ -275,7 +271,7 @@ void updateEvent(vector<Event>& events) {
     getline(cin, input);
     if (!input.empty()) {
         while (!isValidTime(input)) {
-            cout << "That time doesn't look right. Enter again (HH:MM): ";
+            cout << "Invalid time. Enter again (HH:MM): ";
             getline(cin, input);
         }
         e.time = input;
@@ -285,10 +281,10 @@ void updateEvent(vector<Event>& events) {
     getline(cin, input);
     if (!input.empty()) e.location = input;
 
-    cout << "Your event has been updated successfully.\n";
+    cout << "Event updated successfully.\n";
 }
 
-// ==================== VALIDATION ====================
+// Check if date is valid (basic validation)
 bool isValidDate(const string& date) {
     if (date.size() != 10 || date[2] != '/' || date[5] != '/') return false;
 
@@ -323,6 +319,7 @@ bool isValidDate(const string& date) {
     return true;
 }
 
+// Check if time is valid (24-hour format)
 bool isValidTime(const string& time) {
     if (time.size() != 5 || time[2] != ':') return false;
 
@@ -343,6 +340,7 @@ bool isValidTime(const string& time) {
     return !(hour < 0 || hour > 23 || minute < 0 || minute > 59);
 }
 
+// Check if another event exists at the same date and time
 bool isEventConflict(const vector<Event>& events, const string& date, const string& time) {
     for (const auto& e : events) {
         if (e.date == date && e.time == time) return true;
