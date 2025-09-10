@@ -59,7 +59,6 @@ void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
 // Add a new event
 void bookEvent(vector<Event>& events) {
     Event e;
-    cin.ignore(); // clear leftover input
 
     cout << "\nBooking a new event...\n";
     cout << "Event Name: ";
