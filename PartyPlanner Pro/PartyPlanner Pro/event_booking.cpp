@@ -39,7 +39,7 @@ void eventBookingMenu(vector<Guest>& guestList, vector<Event>& eventList) {
         case 1: bookEvent(eventList); break;
         case 2: viewEventBookings(eventList); break;
         case 3: {
-            cout << "Events will be saved automatically when you return to main menu.\n";
+            cout << "Events will be saved automatically when you log out.\n";
             break;
         }
         case 4: {
